@@ -5,6 +5,11 @@
 #-------------------------------------
 
 name: PIPELINE
+# global property
+env:
+  APPLICATION_NAME: "For-Jenkins"
+  PACKAGE_NAME: "com.mcmouse-${{ github.sha }}"
+  
 
 on:
   push:
@@ -20,6 +25,12 @@ jobs:
     steps:
     - name: Print Hello!
       run: echo "Hello World from build!"
+      
+    - name: Execute few commands
+      run: |
+        echo "Message #1"
+        echo "Message #2"
+        echo "Application name: ${{ env.APPLICATION_NAME }}"
           
   deploy:
     runs-on: ubuntu-latest
@@ -29,4 +40,7 @@ jobs:
     steps:
     - name: Print Hello!
       run: echo "Hello World from deploy!"
+      
+    - name: Deploy package
+      run: echo "Deploy package name is ${{ env.PACKAGE_NAME }}"
           
