@@ -37,7 +37,7 @@ jobs:
 
     # clone repository on virtual machine GitHub
     - name: Git clone repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v1 
 
     - name: List current folder
       run: ls -la
@@ -46,6 +46,10 @@ jobs:
     runs-on: ubuntu-latest
     # need for launch job after finished previous
     needs: [test]
+    # local property
+    env:
+      VAR_ONE: "This is Job Level Variable One"
+      VAR_TWO: "This is Job Level Variable Two"
     
     steps:
     - name: Print Hello!
@@ -58,5 +62,14 @@ jobs:
       run: aws --version
 
     - name: Lets test some packages
-      run: zip
-      
+      run: zip --version
+
+    - name: Print env vars
+      run: |
+        echo "var1 = ${{ env.VAR_ONE }}"
+        echo "var1 = ${{ env.VAR_TWO }}"
+        echo "var3 = $LOCAL_VAR"
+      # step property
+      env:
+        LOCAL_VAR: "This is local step property"
+          
