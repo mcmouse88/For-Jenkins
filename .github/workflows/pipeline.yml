@@ -1,0 +1,30 @@
+#-------------------------------------
+# GitHub Actions Part-1 - Basic
+#
+# CopyRight (C) mcmouse88 2022.
+#-------------------------------------
+
+name: PIPELINE
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    
+jobs:
+  test_job:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print Hello!
+    - run: echo "Hello World from build!"
+          
+  test_deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Print Hello!
+    - run: echo "Hello World from deploy!"
+          
