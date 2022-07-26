@@ -19,12 +19,12 @@ jobs:
 
     steps:
     - name: Print Hello!
-    - run: echo "Hello World from build!"
+      run: echo "Hello World from build!"
           
   test_deploy:
     runs-on: ubuntu-latest
     
     steps:
     - name: Print Hello!
-    - run: echo "Hello World from deploy!"
+      run: echo "Hello World from deploy!"
           
