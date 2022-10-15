@@ -72,4 +72,3 @@ jobs:
       # step property
       env:
         LOCAL_VAR: "This is local step property"
-          
